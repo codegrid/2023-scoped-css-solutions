@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@scopeを使わないデモ</title>
+  <style>
+    p { margin: 0; }
+    div {
+      margin: 10px;
+      padding: 20px;
+    }
+
+    .blue { border: 3px solid blue; }
+    .red { border: 3px solid red; }
+    .blue p { color: blue; }
+    .red p { color: red; }
+  </style>
+</head>
+<body>
+  <div class="blue">
+    <p>テキストが入ります。</p>
+    <div class="red">
+      <p>テキストが入ります。</p>
+      <div class="blue">
+        <p>テキストが入ります。</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

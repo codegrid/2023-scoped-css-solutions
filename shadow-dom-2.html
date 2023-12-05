@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@scopeを使ったデモ</title>
+  <style>
+    body {
+      font-size: 20px;
+      color: green;
+    }
+
+    p {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <p>Light DOM上のテキストです。</p>
+  <my-component data-text="Shadow DOM内のp要素にテキストが入ります。"></my-component>
+  <p>Light DOM上のテキストです。</p>
+  <script>
+    // Create a class for the element
+    class MyComponent extends HTMLElement {
+      constructor() {
+        super();
+      }
+      connectedCallback() {
+        const shadow = this.attachShadow({ mode: "open" });
+
+        const text1 = document.createElement("p");
+        text1.setAttribute("class", "text-1");
+
+        const text = this.getAttribute("data-text");
+        text1.textContent = text;
+
+        const style = document.createElement("style");
+        style.textContent = `
+          p {
+            font-weight: bold;
+          }
+        `;
+
+        shadow.appendChild(style);
+        shadow.appendChild(text1);
+      }
+    }
+
+    customElements.define("my-component", MyComponent);
+  </script>
+</body>
+</html>

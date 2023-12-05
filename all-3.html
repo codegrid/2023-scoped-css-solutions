@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo</title>
+  <style>
+    @layer one, two;
+
+    @layer two {
+      div { color: green; }
+      div.-revert { color: revert-layer; }
+    }
+
+    @layer one {
+      div { color: red; }
+    }
+  </style>
+</head>
+<body>
+  <p>
+    The quick brown fox jumps over the lazy dog.
+  </p>
+  
+  <p class="-revert">
+    The quick brown fox jumps over the lazy dog.
+  </p>
+</body>
+</html>

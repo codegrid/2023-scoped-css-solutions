@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo</title>
+  <style>
+    @layer reset; /* 1番目のカスケードレイヤー */
+    @layer base;  /* 2番目のカスケードレイヤー */
+    @layer theme; /* 3番目のカスケードレイヤー */
+    /* @layer reset, base, theme; と書いても良い */
+
+    @import url(reset.css) layer(reset);
+
+    /* レイヤーになっていないスタイル */
+    h1 { color: green; }
+
+    @layer base { /* 2番目のカスケードレイヤー */
+      h1 { font-family: sans-serif; } 
+    }
+
+    @layer theme { /* 3番目のカスケードレイヤー */
+      body h1.heading { color: tomato; }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="heading">テキストが入ります。</h1>
+</body>
+</html>

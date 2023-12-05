@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@scopeを使ったデモ</title>
+  <style>
+    body {
+      font-size: 20px;
+      color: green;
+    }
+
+    p {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <p>iframeの外のテキストです。</p>
+  <iframe srcdoc='
+    <!DOCTYPE html>
+    <body>
+      <p>iframe内のp要素にテキストが入ります。</p>
+    </body>
+  '></iframe>
+  <p>iframeの外のテキストです。</p>
+</body>
+</html>
