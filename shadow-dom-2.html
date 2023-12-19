@@ -20,29 +20,22 @@
   <my-component data-text="Shadow DOM内のp要素にテキストが入ります。"></my-component>
   <p>Light DOM上のテキストです。</p>
   <script>
-    // Create a class for the element
+    // my-component に適用する要素内容とスタイルを定義
     class MyComponent extends HTMLElement {
       constructor() {
         super();
       }
       connectedCallback() {
         const shadow = this.attachShadow({ mode: "open" });
-
-        const text1 = document.createElement("p");
-        text1.setAttribute("class", "text-1");
-
+        
+        // data-text属性の値をShadow DOMのテキストとして追加
         const text = this.getAttribute("data-text");
-        text1.textContent = text;
-
-        const style = document.createElement("style");
-        style.textContent = `
-          p {
-            font-weight: bold;
-          }
+        shadow.innerHTML = `
+          <style>
+            p { font-weight: bold; }
+          </style>
+          <p class="text-1">${text}</p>
         `;
-
-        shadow.appendChild(style);
-        shadow.appendChild(text1);
       }
     }
 
