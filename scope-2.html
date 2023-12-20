@@ -20,9 +20,18 @@
       :scope { border: 3px solid red; }
       p { color: red; }
     }
+
+    @scope (.message) {
+      :scope {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="message">
+    <p><strong><code>@scope</code>がサポートされていません。</strong></p>
+  </div>
   <div class="blue">
     <p>テキストが入ります。</p>
     <div class="red">
